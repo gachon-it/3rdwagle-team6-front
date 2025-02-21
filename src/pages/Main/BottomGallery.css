@@ -1,10 +1,10 @@
 .bottom-gallery-wrap {
-    margin-top: 50px;
+    margin-top: 0px;
     margin-bottom: 50px;
     width: 1150px;
     height: 300px;
     display: flex;
-    border-radius: 30px;
+    border-radius: 10px;
     align-items: center;
     justify-content: center;
     gap: 10px;

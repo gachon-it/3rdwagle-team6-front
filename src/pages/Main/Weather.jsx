@@ -130,15 +130,15 @@ function Weather() {
             <div className="current-clothes-info-wrap">
                 <div className="clothes-info">
                     <IoShirt fontSize={"40px"}/>
-                    <div>상의: {123}</div>
+                    <div>상의: {5}</div>
                 </div>
                 <div className="clothes-info">
                     <PiPantsFill fontSize={"40px"}/>
-                    <div>하의: {11}</div>
+                    <div>하의: {5}</div>
                 </div>
                 <div className="clothes-info">
                     <GiConverseShoe fontSize={"40px"}/>
-                    <div>신발: {3}</div>
+                    <div>신발: {1}</div>
                 </div>
             </div>
 
