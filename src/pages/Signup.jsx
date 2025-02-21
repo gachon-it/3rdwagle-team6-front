@@ -38,7 +38,7 @@ export default function Signup() {
   return (
     <div className="signup-total-wrap">
       <div className="signup-total-contents-wrap">
-        <h1 className="logo-design">OutfitMate</h1>
+        <h1 className="register-logo-design">OutfitMate</h1>
         <form className="signup-form-wrap" onSubmit={(e) => e.preventDefault()}>
           <input
             className="signup-input"

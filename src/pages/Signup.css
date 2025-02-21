@@ -17,7 +17,8 @@
     text-align: center;
   }
   
-  .logo-design {
+  .register-logo-design {
+    font-family: Lobster, sans-serif;
     font-size: 2rem;
     font-weight: bold;
     color: #333;
@@ -30,7 +31,7 @@
   }
   
   .signup-input {
-    width: 100%;
+    width: 92%;
     padding: 12px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -52,7 +53,7 @@
   .signup-button {
     width: 100%;
     padding: 12px;
-    background-color: #007bff;
+    background-color: #7886C7;
     color: white;
     border: none;
     border-radius: 6px;
@@ -62,6 +63,6 @@
   }
   
   .signup-button:hover {
-    background-color: #0056b3;
+    background-color: #5b6aaf;
   }
   
