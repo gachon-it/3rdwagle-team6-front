@@ -6,7 +6,7 @@ import TodayWeather from "./TodayWeather"; // 새로 만든 컴포넌트 임포�
 import { WiCloudy, WiDaySunny, WiSnow, WiRain, WiLightning, WiRaindrops, WiNa } from "react-icons/wi";
 import "./Main.css";
 
-const API_KEY = "524f96add4f7bb3b7b37f54296b5c857";
+const API_KEY ="45a964a3b0806bb7add70a69a4f86d8e";
 
 const getWeatherIcon = (weather, size) => {
     const icons = {

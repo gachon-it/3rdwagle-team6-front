@@ -6,7 +6,9 @@ import Main from './pages/Main/Main'
 import Profile from './pages/Profile/Profile'
 import Message from './pages/Message/Message'
 import Search from './pages/Search/Search'
+import Signup from './pages/Signup'
 import './App.css'
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
       <Route path="/Message" element={<Message />} />
       <Route path="/Profile" element={<Profile />} />
       <Route path='/Search' element={<Search />} />
+      <Route path="/signup" element={<Signup/>}/>
     </Routes>
   )
 }
