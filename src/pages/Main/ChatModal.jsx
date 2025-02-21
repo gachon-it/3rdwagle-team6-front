@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import "./ChatModal.css";
 
-function ChatModal({ onClose, onEndChat }) {  // `onEndChat` 추가
+function ChatModal({ onClose, onEndChat }) {
     const [messages, setMessages] = useState([
         { text: "안녕하세요! 패션 상담 챗봇입니다. 😊 무엇을 도와드릴까요?", sender: "bot" }
     ]);
@@ -9,30 +10,48 @@ function ChatModal({ onClose, onEndChat }) {  // `onEndChat` 추가
     const [showEndButton, setShowEndButton] = useState(false);
     const messagesEndRef = useRef(null);
 
+    // ✅ 메시지 추가 후 스크롤 최하단 이동
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
     useEffect(() => {
-        console.log("메시지 개수:", messages.length);
         if (messages.length >= 5) {
             setShowEndButton(true);
         }
     }, [messages]);
 
-    const handleSendMessage = () => {
+    const handleSendMessage = async () => {
         if (!inputText.trim()) return;
-        const newMessages = [...messages, { text: inputText, sender: "user" }];
-        setMessages(newMessages);
+
+        // ✅ 상태 업데이트를 prev 사용하여 최신 상태 유지
+        setMessages(prev => [...prev, { text: inputText, sender: "user" }]);
+        const userMessage = inputText; // input 값 백업
         setInputText("");
 
-        setTimeout(() => {
-            setMessages(prev => [...prev, { text: "좋은 질문이에요! 더 구체적으로 말씀해 주세요. 😊", sender: "bot" }]);
-        }, 1000);
+        try {
+            const response = await axios.post("http://localhost:8080/ai/chats", {
+                userId: 1, // TODO: 로그인된 사용자 ID로 변경 필요
+                message: userMessage,
+            });
+
+            // ✅ API 응답을 받은 후에도 최신 상태 유지
+            // 챗봇 응답 메시지 추가
+            setMessages(prev => [
+                ...prev,
+                { text: response.data, sender: "bot" }  // 응답 받은 메시지 추가
+            ]);
+        } catch (error) {
+            console.error("API 요청 중 오류 발생:", error);
+            setMessages(prev => [
+                ...prev,
+                { text: "⚠️ 오류 발생! 다시 시도해 주세요.", sender: "bot" }
+            ]);
+        }
     };
 
     const handleEndChat = () => {
-        onEndChat(); // 부모 컴포넌트(Main)에서 채팅 모달을 닫고 추천 코디 모달을 띄우는 로직 실행
+        onEndChat(); // 채팅 종료 후 추천 코디 모달 띄우기
     };
 
     return (
@@ -62,6 +81,7 @@ function ChatModal({ onClose, onEndChat }) {  // `onEndChat` 추가
                         placeholder="메시지를 입력하세요..."
                         value={inputText}
                         onChange={(e) => setInputText(e.target.value)}
+                        onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
                     />
                     <button onClick={handleSendMessage}>전송</button>
                 </div>
