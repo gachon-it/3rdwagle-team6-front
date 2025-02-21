@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.login-total-wrap{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.login-total-contents-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-total-contents-wrap *{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-login-input-wrap{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border: 1px solid rgb(219,219,219);
+    border-radius: 1px;
+    align-items: center;
+    width: 389px;
+    height: 389px;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.logo-design {
+    font-family: Lobster, sans-serif;
+    color: black;
+    font-size: 65px;
+    font-weight: 300;
+    text-align: center;
+    padding-bottom:10%;
+}
+
+.login-wrap{
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: inherit;
+}
+
+.login-wiy-icon-wrap{
+    flex: 2;
+    margin: 24px 0 50px;
+}
+
+.input-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-button-wrap{
+    margin: 13px 40px;
+}
+
+.input-button{
+    flex: 1;
+    color: rgb(255,255,255);
+    background-color: rgb(0, 149, 246);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    opacity: .7;
+    width: 268px;
+    height: 32px;
+}
+
+.login-form-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-contens-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-label input:focus {
+    width: 260px;
+    border: 1px solid rgb(150, 150, 150);
+    outline: none;
+    padding-left: 8px;
+    border-radius: 2px;
+}
+
+.login-label input{
+    width: 260px;
+    padding-left: 8px;
+    border: 1px solid rgb(194, 194, 194);
+    outline: none;
+    border-radius: 2px;
+}
+
+.login-input-wrap{
+    display: flex;
+    flex: 1 0 0px;
+    font: inherit;
+    font-size: 100%;
+    height: 60px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 3px;
+    min-width: 0;
+    padding: 0;
+    position: relative;
+}
+
+.login-input {
+    width: 280px;
+    height: 25px;
+    padding: 12px 8px;
+    color: black;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    transition: all 0.2s ease-in-out;
+}
+
+.login-input:focus {
+    border: 1px solid rgb(150, 150, 150);
+    outline: none;
+}
+
+.login-input::placeholder {
+    color: rgb(115, 115, 115);
+    line-height: 36px;
+    vertical-align: baseline;
+    white-space: nowrap;
+    font: inherit;
+    font-weight:400;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out;
+}
+  
+.login-input:focus::placeholder {
+    color: transparent; /* 포커스 시 placeholder 숨김 */
+}
+
+.login-input.filled::placeholder {
+    color: transparent; /* 입력값이 있을 때도 placeholder 숨김 */
+}
+
+
+.login-button {
+    display: flex;
+    width:35%;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #FFF2F2;
+    margin-top:30px;
+    background: #7886C7;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.login-or-wrap{
+    display: flex;
+    margin: auto;
+    box-sizing: border-box;
+    max-width: 272px;
+    min-height: 36px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-or-line{
+    display: block;
+    width: 103px;
+    height: 1px;
+    background-color: rgb(115,115,115);;
+}
+
+
+.login-or{
+    margin: auto;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(115,115,115);
+}
+
+.login-facebook-wrap{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    box-sizing: border-box;
+    max-width: 272px;
+    min-height: 36px;
+    align-items: center;
+    
+}
+
+.login-forget-password-wrap{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-bottom: -15px;
+    box-sizing: border-box;
+    max-width: 272px;
+    min-height: 36px;
+    align-items: center;
+}
+
+.login-forget-password{
+    color: #385185;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.login-sign-up-wrap{
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    border: 1px solid rgb(219,219,219);
+    border-radius: 1px;
+    align-items: center;
+    width: 389px;
+    padding: 10px 0px;
+}
+
+.login-sign-up-wrap p{
+    margin: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.login-sign-up-wrap a{
+    color: rgb(0, 149, 246);
+    font-weight: 700;
+}
+
+.login-app-download-wrap{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 10px 0;
+    width: 350px;
+    min-height: 95px;
+}
+
+.login-app-download-wrap-message{
+    flex: 3;
+    margin: 10px 0px;
+}
+
+.login-app-download-wrap-message p{
+    font-size: 14px;
+}
+
+.login-app-download-wrap-img{
+    flex: 4;
+    margin: 10px 0px;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.login-app-download-wrap-img img{
+    height: 40px;
+    width: 100%;
+    object-fit: contain;
+}
