@@ -8,6 +8,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 (선택 사항) */
+  transition: transform 0.3s ease; /* 호버 시 크기 변화를 부드럽게 */
+}
+
+.ItemCard:hover{
+  transform: scale(1.05);  /* 호버 시 5% 커지도록 설정 */
 }
 
 .itemcover {

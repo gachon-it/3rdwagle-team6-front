@@ -32,6 +32,13 @@ export default function Search() {
       site: "왼쪽 서랍 아래",
     },
     {
+      img: "./assets/2.png",
+      color: "회색",
+      type: "니트",
+      tags: ["겨울", "단정"],
+      site: "왼쪽 서랍 아래",
+    },
+    {
       img: "./assets/3.jpg",
       color: "하양",
       type: "셔츠",
@@ -42,8 +49,57 @@ export default function Search() {
       img: "./assets/4.png",
       color: "빨강",
       type: "니트",
-      tags: ["겨울", "단정정"],
+      tags: ["겨울", "단정"],
       site: "왼쪽 서랍 아래",
+    },
+    {
+      img: "./assets/6.jpg",
+      color: "회색",
+      type: "면바지",
+      tags: ["봄", "단정"],
+      site: "왼쪽 서랍 위",
+    },
+    {
+      img: "./assets/5.jpg",
+      color: "남색",
+      type: "셔츠",
+      tags: ["여름", "캐주얼"],
+      site: "왼쪽 서랍 위",
+    },
+    {
+      img: "./assets/7.jpg",
+      color: "회색",
+      type: "면바지",
+      tags: ["봄", "캐주얼"],
+      site: "왼쪽 서랍 위",
+    },
+    {
+      img: "./assets/8.png",
+      color: "검정",
+      type: "슬랙스",
+      tags: ["가을", "단정"],
+      site: "왼쪽 서랍 위",
+    },
+    {
+      img: "./assets/9.jpg",
+      color: "회색",
+      type: "면바지",
+      tags: ["여름", "캐주얼"],
+      site: "왼쪽 서랍 위",
+    },
+    {
+      img: "./assets/10.jpg",
+      color: "회색",
+      type: "슬랙스",
+      tags: ["봄", "단정"],
+      site: "왼쪽 서랍 위",
+    },
+    {
+      img: "./assets/11.jpg",
+      color: "회색",
+      type: "러닝화",
+      tags: ["모든 계절", "캐쥬얼"],
+      site: "서랍장 안",
     },
   ];
 
@@ -149,7 +205,8 @@ export default function Search() {
                 key={`chunk-${index}`}
                 className="section-one"
                 style={{
-                  justifyContent: chunk.length === 2 ? "flex-start" : "space-between",
+                  justifyContent: chunk.length === 2 ? "start" : "space-between",
+                  gap: chunk.length === 2 ? "5.3%" : "0",
                 }}
               >
                 {chunk.map((filteredItem) => (
@@ -161,7 +218,7 @@ export default function Search() {
                     tags={filteredItem.tags}
                     site={filteredItem.site}
                     style={{
-                      marginRight: chunk.length === 2 ? "60px" : "0",
+                      marginRight: chunk.length === 2 ? "20px" : "0",
                     }}
                   />
                 ))}
