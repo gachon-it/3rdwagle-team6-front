@@ -55,7 +55,7 @@ export default function Main() {
                     onClose={() => setShowChatModal(false)}
                     onEndChat={() => {
                         setShowChatModal(false);  
-                        setShowOutfitModal(true); 
+                    
                     }}
                 />
             )}
