@@ -3,7 +3,7 @@ function ItemCard({ img, color, type, tags, site }) {
   return (
     <div className="ItemCard">
       <div className="itemcover">
-        <img alt="" src="{img}" />
+        <img alt="" src={img} />
       </div>
       <div className="info">
         <div className="itemHeader">
@@ -13,7 +13,7 @@ function ItemCard({ img, color, type, tags, site }) {
           </span>
           <div className="itemtags">
             {tags.map((item, i) => (
-              <div key="{i}" className="tag">
+              <div key={i} className="tag">
                 {item}
               </div>
             ))}

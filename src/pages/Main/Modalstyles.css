@@ -1,0 +1,133 @@
+.AddModal {
+  font-family: sans-serif;
+  display: flex;
+}
+
+.photo-add-modal-background {
+  margin: 0;
+  width: 100vw;
+  background-color: #f5f6f8;
+}
+
+.photo-add-modal-mainground {
+  margin: 0 auto;
+  width: 87.5%;
+  background-color: white;
+}
+
+.photo-add-modal-top {
+  width: 100%;
+  height: 3.1vh;
+  background-color: #f1ecea;
+}
+
+.photo-add-modal-menu {
+  margin: 2vh auto 0;
+  width: 70%;
+  height: 15vh;
+}
+
+.photo-add-modal-body {
+  margin: 2vh auto 0;
+  margin-top: 4%;
+  width: 70%;
+  height: 60vh;
+}
+
+.photo-add-modal-pagetype {
+  font-size: 2.5vw;
+  font-weight: bold;
+  text-align: center;
+}
+
+.photo-add-modal-container {
+  display: flex;
+  gap: 5%;
+  margin-top: 2vh;
+  justify-content: center;
+}
+
+.photo-add-modal-image-section {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo-add-modal-imageshot {
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.photo-add-modal-plus {
+  font-size: 3rem;
+  color: #555;
+}
+
+.photo-add-modal-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+}
+
+.photo-add-modal-form-section {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.photo-add-modal-color-picker {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.photo-add-modal-color-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.photo-add-modal-color-box.selected {
+  filter: brightness(85%);
+}
+
+.photo-add-modal-check {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: white;
+}
+
+.photo-add-modal-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.photo-add-modal-dropbox {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.photo-add-modal-submit-button {
+  background-color: #555;
+  color: white;
+  border-radius: 10px;
+}

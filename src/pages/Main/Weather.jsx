@@ -94,7 +94,7 @@ function Weather() {
         <div className="rightside-wrap">
             <div className="timer-wrap">{timer}</div>
 
-            <h1>옷장 정보</h1>
+            <div style={{fontSize:"40px", fontWeight:"700",fontFamily:"Lobster",padding:"3px"}}>옷장 정보</div>
             <div className="current-clothes-info-wrap">
                 <div className="clothes-info">
                     <IoShirt fontSize={"40px"}/>
@@ -111,7 +111,7 @@ function Weather() {
             </div>
 
             {/* "오늘의 날씨" 타이틀 */}
-            <h2 style={{ paddingBottom: "3px" }}>오늘의 날씨</h2>
+            <h2 style={{ padding: "3px" }}>오늘의 날씨</h2>
 
             {/* 현재 시각에 해당하는 날씨를 강조 */}
             <div className="today-weather-info-wrap">
