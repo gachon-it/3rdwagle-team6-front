@@ -283,3 +283,11 @@
     width: 100%;
     object-fit: contain;
 }
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+  }
+  
