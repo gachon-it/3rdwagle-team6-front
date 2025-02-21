@@ -6,7 +6,7 @@ import TodayWeather from "./TodayWeather"; // 새로 만든 컴포넌트 임포�
 import { WiCloudy, WiDaySunny, WiSnow, WiRain, WiLightning, WiRaindrops, WiNa } from "react-icons/wi";
 import "./Main.css";
 
-const API_KEY ="45a964a3b0806bb7add70a69a4f86d8e";
+const API_KEY = "524f96add4f7bb3b7b37f54296b5c857";
 
 const getWeatherIcon = (weather, size) => {
     const icons = {
@@ -45,43 +45,75 @@ function Weather() {
         }
     };
 
-    // 가장 가까운 시간의 날씨 데이터를 찾는 함수
     const findClosestWeather = (list, targetHour) => {
-        const filtered = list.filter((w) => {
-            const hour = new Date(w.dt_txt).getHours();
-            return Math.abs(hour - targetHour) < 3;
+        return list.reduce((prev, curr) => {
+            const prevDiff = Math.abs(new Date(prev.dt_txt).getHours() - targetHour);
+            const currDiff = Math.abs(new Date(curr.dt_txt).getHours() - targetHour);
+            return currDiff < prevDiff ? curr : prev;
         });
-        return filtered.length > 0 ? filtered[0] : null;
     };
-
-    // 날씨 정보를 가져오는 함수
+    
     const getWeather = async () => {
         try {
             const latitude = 37.5665;
             const longitude = 126.9780;
-
+    
             const response = await fetch(
                 `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
             );
             const json = await response.json();
-
+    
             setCity(json.city.name);
-
-            const todayDate = new Date().toISOString().split("T")[0];
-            const todayData = json.list.filter((weather) => weather.dt_txt.includes(todayDate));
-
-            const now = new Date().getHours();
-            setCurrentWeather(findClosestWeather(todayData, now));
-
+            console.log("API 응답 데이터:", json);
+    
+            // 🌟 오늘 날짜 가져오기
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, "0");
+            const day = String(today.getDate()).padStart(2, "0");
+            const todayDate = `${year}-${month}-${day}`;
+    
+            console.log("오늘 날짜:", todayDate);
+    
+            // 🌟 오늘 날짜의 데이터 필터링
+            const todayData = json.list.filter((weather) => 
+                weather.dt_txt.startsWith(todayDate)
+            );
+    
+            console.log("오늘 날짜 데이터:", todayData);
+    
+            // 🌟 현재 시간과 가장 가까운 데이터 찾기 (단 하나의 값만 선택)
+            const nowHour = new Date().getHours();
+            const closestWeather = findClosestWeather(todayData, nowHour);
+    
+            console.log("현재와 가장 가까운 날씨:", closestWeather);
+    
+            setCurrentWeather(closestWeather);
+    
+            // 🌟 closestWeather의 시간대를 확인하여 구별
+            if (closestWeather) {
+                const closestHour = new Date(closestWeather.dt_txt).getHours();
+                if (closestHour >= 6 && closestHour < 12) {
+                    setCurrentPeriod("morning");
+                } else if (closestHour >= 12 && closestHour < 18) {
+                    setCurrentPeriod("afternoon");
+                } else {
+                    setCurrentPeriod("evening");
+                }
+            }
+    
+            // 🌟 시간대별 데이터 가져오기 (단 하나의 값만 선택)
             setTodayWeather({
                 morning: findClosestWeather(todayData, 6),
                 afternoon: findClosestWeather(todayData, 12),
                 evening: findClosestWeather(todayData, 18),
             });
+    
         } catch (error) {
             console.error("날씨 정보를 가져오는 중 오류 발생:", error);
         }
     };
+    
 
     useEffect(() => {
         getWeather();
@@ -117,12 +149,19 @@ function Weather() {
             <div className="today-weather-info-wrap">
                 {currentWeather ? (
                     <>
-                    <TodayWeather timeLabel="🌅" weather={todayWeather.morning} isHighlighted={currentPeriod === "morning"} />
-                    <TodayWeather timeLabel="☀️" weather={todayWeather.afternoon} isHighlighted={currentPeriod === "afternoon"} />
-                    <TodayWeather timeLabel="🌆" weather={todayWeather.evening} isHighlighted={currentPeriod === "evening"} />
-                    </> ) : (
-                        <p>현재 날씨 정보를 불러오는 중...</p>
-                    )}
+                        {currentPeriod === "morning" && (
+                            <TodayWeather timeLabel="🌅" weather={todayWeather.morning} isHighlighted />
+                        )}
+                        {currentPeriod === "afternoon" && (
+                            <TodayWeather timeLabel="☀️" weather={todayWeather.afternoon} isHighlighted />
+                        )}
+                        {currentPeriod === "evening" && (
+                            <TodayWeather timeLabel="🌆" weather={todayWeather.evening} isHighlighted />
+                        )}
+                    </>
+                ) : (
+                    <p>현재 날씨 정보를 불러오는 중...</p>
+                )}
             </div>
         </div>
     );
