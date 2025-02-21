@@ -1,7 +1,7 @@
+import React, { useState } from "react";
 import "./Modalstyles.css";
-import { useState } from "react";
 
-function AddModal() {
+function AddModal({ onClose }) {
   const colors = [
     { name: "흰색", hex: "#FFFFFF" },
     { name: "베이지색", hex: "#F5DEB3" },
@@ -45,109 +45,68 @@ function AddModal() {
       tags,
       location,
     });
+    onClose(); // 제출 후 모달 닫기
   };
 
   return (
-    <div className="photo-add-modal-background">
-      <div className="photo-add-modal-mainground">
-        <div className="photo-add-modal-top" />
-        <nav className="photo-add-modal-menu">
-          <div className="photo-add-modal-pagetype">추가하기</div>
-        </nav>
-        <div className="photo-add-modal-body">
-          <div className="photo-add-modal-container">
-            <div className="photo-add-modal-image-section">
-              <label
-                htmlFor="imageUpload"
-                className="photo-add-modal-imageshot"
-              >
-                {selectedImage ? (
-                  <img
-                    src={selectedImage}
-                    alt="Preview"
-                    className="photo-add-modal-preview"
-                  />
-                ) : (
-                  <span className="photo-add-modal-plus">+</span>
-                )}
-              </label>
-              <input
-                type="file"
-                id="imageUpload"
-                accept="image/*"
-                style={{ display: "none" }}
-                onChange={handleImageUpload}
-              />
-            </div>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h3>📸 옷 추가</h3>
+          <button className="modal-close-btn" onClick={onClose}>✖</button>
+        </div>
 
-            <div className="photo-add-modal-form-section">
-              <div className="photo-add-modal-color-picker">
-                {colors.map((color) => (
-                  <div
-                    key={color.name}
-                    className={`photo-add-modal-color-box ${
-                      selectedColor === color.hex ? "selected" : ""
-                    }`}
-                    style={{ backgroundColor: color.hex }}
-                    onClick={() => setSelectedColor(color.hex)}
-                  >
-                    {selectedColor === color.hex && (
-                      <span className="photo-add-modal-check">✔</span>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              <select
-                className="photo-add-modal-dropbox"
-                value={mainCategory}
-                onChange={(e) => setMainCategory(e.target.value)}
-              >
-                <option value="">종류 선택</option>
-                {Object.keys(categories).map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-
-              {mainCategory && (
-                <select
-                  className="photo-add-modal-dropbox"
-                  value={subCategory}
-                  onChange={(e) => setSubCategory(e.target.value)}
-                >
-                  <option value="">세부 선택</option>
-                  {categories[mainCategory].map((sub) => (
-                    <option key={sub} value={sub}>
-                      {sub}
-                    </option>
-                  ))}
-                </select>
+        <div className="modal-body">
+          <div className="image-upload-section">
+            <label htmlFor="imageUpload" className="image-upload-box">
+              {selectedImage ? (
+                <img src={selectedImage} alt="Preview" className="image-preview" />
+              ) : (
+                <span className="plus-icon">+</span>
               )}
-
-              <input
-                className="photo-add-modal-input"
-                type="text"
-                placeholder="태그 입력 (쉼표로 구분)"
-                value={tags}
-                onChange={(e) => setTags(e.target.value)}
-              />
-              <input
-                className="photo-add-modal-input"
-                type="text"
-                placeholder="위치 입력"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-              />
-              <button
-                className="photo-add-modal-submit-button"
-                onClick={handleSubmit}
-              >
-                추가하기
-              </button>
-            </div>
+            </label>
+            <input
+              type="file"
+              id="imageUpload"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handleImageUpload}
+            />
           </div>
+
+          <div className="color-picker">
+            {colors.map((color) => (
+              <div
+                key={color.name}
+                className={`color-box ${selectedColor === color.hex ? "selected" : ""}`}
+                style={{ backgroundColor: color.hex }}
+                onClick={() => setSelectedColor(color.hex)}
+              >
+                {selectedColor === color.hex && <span className="check-mark">✔</span>}
+              </div>
+            ))}
+          </div>
+
+          <select className="dropdown" value={mainCategory} onChange={(e) => setMainCategory(e.target.value)}>
+            <option value="">종류 선택</option>
+            {Object.keys(categories).map((category) => (
+              <option key={category} value={category}>{category}</option>
+            ))}
+          </select>
+
+          {mainCategory && (
+            <select className="dropdown" value={subCategory} onChange={(e) => setSubCategory(e.target.value)}>
+              <option value="">세부 선택</option>
+              {categories[mainCategory].map((sub) => (
+                <option key={sub} value={sub}>{sub}</option>
+              ))}
+            </select>
+          )}
+
+          <input className="text-input" type="text" placeholder="태그 입력 (쉼표로 구분)" value={tags} onChange={(e) => setTags(e.target.value)} />
+          <input className="text-input" type="text" placeholder="위치 입력" value={location} onChange={(e) => setLocation(e.target.value)} />
+
+          <button className="submit-btn" onClick={handleSubmit}>추가하기</button>
         </div>
       </div>
     </div>
