@@ -1,6 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 *{
     margin: 0;
     padding: 0;
+}
+
+/* 좌측 네비게이터 - 화면 고정 */
+.fixed-navigator {
+    position: fixed;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 네비게이터 버튼 */
+.nav-btn {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border: none;
+    padding: 8px 8px;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.2s ease-in-out;
+}
+
+.nav-btn:hover {
+    background-color: #c4c4c4;
+}
+
+/* 사진 추가 버튼 (우측 하단) */
+.add-photo-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.add-photo-btn:hover {
+    background-color: #ff4f4f;
+}
+
+/* 사진 추가 버튼 스타일 (우측 하단) */
+.add-photo-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.add-photo-btn:hover {
+    background-color: #ff4f4f;
+}
+
+/**************************************************************/
+
+.gallery-wrap{
+    width: 700px;
+    height: 600px;
+    background-color: white;
+}
+
+.rightside-wrap{
+    width: 300px;
+    height: 600px;
+    border-radius: 10px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+.timer-wrap{
+    font-family: Lobster, sans-serif;
+    font-size: 60px;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.current-clothes-info-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 80px;
+    width: 200px;
+    height: 160px;
+    background-color: white;
+}
+
+.clothes-info{
+    display: flex;
+    align-items: center;
+}
+
+.clothes-info div{
+    margin-left: 5px;
+    font-family: Lobster;
+    font-size: 20px;
+}
+
+.today-weather-info-wrap{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 300px;
+    height: 200px;
+    background-color: white;
+}
+
+.today-weather-time-icon{
+    font-size: 60px;
+    margin-top: -10px;
+}
+
+.today-weather-temperature{
+    font-size: 40px;
+    font-family: Lobster;
+}
+
+.today-weather-wrap{
+    display: flex;
+    width: 130px;
+    height: 240px;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    justify-content: center;
+    align-items: center;
 }
 
 .total-main-wrap{
@@ -13,6 +167,108 @@
 }
 
 .total-main-content-wrap{
-    width: 80%;
+    width: 1500px;
 
+}
+
+.main-logo-design {
+    justify-content: center;
+    font-family: Lobster, sans-serif;
+    color: black;
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.below-content-wrap{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.clothes-weather-wrap{
+    display: flex;
+    justify-content: center;
+}
+
+.gallery-wrap {
+    width: 800px;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* 기존 리스트 스타일을 제거 (• 점 없애기) */
+ul, ol {
+    list-style: none; /* 기본 리스트 점 제거 */
+    padding: 0;
+    margin: 0;
+}
+
+/* 갤러리 관련 스크롤 비활성화 */
+.gallery-slider {
+    overflow: hidden; /* 스크롤 자체를 막음 */
+}
+
+
+/* 슬라이드 영역 */
+.gallery-slider {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* 스크롤바 숨기기 */
+.gallery-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-item {
+    flex: 0 0 auto;
+    width: 800px;
+    height: 600px;
+    scroll-snap-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 이전, 다음 버튼 */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 24px;
+    border-radius: 5px;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/***************************************************/
+.total-bottom-gallery-wrap{
+    margin-top: 30px;
 }

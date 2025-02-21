@@ -5,6 +5,7 @@ import Login from './pages/Login/Login'
 import Main from './pages/Main/Main'
 import Profile from './pages/Profile/Profile'
 import Message from './pages/Message/Message'
+import Search from './pages/Search/Search'
 import './App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route path="/Main" element={<Main />} />
       <Route path="/Message" element={<Message />} />
       <Route path="/Profile" element={<Profile />} />
+      <Route path='/Search' element={<Search />} />
     </Routes>
   )
 }

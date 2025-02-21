@@ -1,0 +1,59 @@
+.ItemCard {
+  font-family: Roboto;
+  width: 311px;
+  height: 456px;
+  border: 3px solid gray;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.itemcover {
+}
+
+.itemcover img {
+  width: 311px;
+  height: 373px;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.info {
+  width: 311px;
+  height: 78px;
+  background-color: #ecedee;
+  border-top: 3px dashed gray;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.itemname {
+  margin: 12px 0px 0px 12px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.itemtags {
+  display: flex;
+  margin-top: 12px;
+  margin-right: 5px;
+  list-style: none;
+}
+
+.tag {
+  background-color: #b6c1cc;
+  margin-right: 6px;
+  padding: 2px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.itemsite {
+  display: flex;
+  font-size: 15px;
+  padding: 5px 0px 15px 12px;
+  text-align: left;
+}
